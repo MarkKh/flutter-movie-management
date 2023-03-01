@@ -1,4 +1,4 @@
-# db
+# Flutter Project : Movie management
 
 A new Flutter project.
 

@@ -2,21 +2,31 @@
 class Transactions {
   late int? id;
   String title;
-  double amount;
-  String date;
+  String director;
+  double duration;
+  double rating;
+  String category;
+  String actor;
 
-  Transactions(
-      {this.id,
-      required this.title,
-      required this.amount,
-      required this.date});
+  Transactions({
+    this.id,
+    required this.title,
+    required this.director,
+    required this.duration,
+    required this.rating,
+    required this.category,
+    required this.actor,
+  });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'title': title,
-      'amount': amount,
-      'date': date
+      'director': director,
+      'duration': duration,
+      'rating': rating,
+      'category': category,
+      'actor': actor,
     };
   }
 }
