@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MyHomePage(title: 'แอพบัญชี'),
+        home: const MyHomePage(title: 'Movie Management'),
       ),
     );
   }
