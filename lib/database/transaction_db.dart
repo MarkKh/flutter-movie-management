@@ -24,14 +24,17 @@ class TransactionDB {
     var db = await openDatabase();
 
     //create store
-    var store = intMapStoreFactory.store("expense");
+    var store = intMapStoreFactory.store("Movie");
 
     //json
     var keyID = store.add(db, {
       "id": statement.id,
       "title": statement.title,
-      "amount": statement.amount,
-      "date": statement.date
+      "director": statement.director,
+      "duration": statement.duration,
+      "rating": statement.rating,
+      "category": statement.category,
+      "actor": statement.actor,
     });
     db.close();
     return keyID;
@@ -42,18 +45,29 @@ class TransactionDB {
     var db = await openDatabase();
 
     //create store
-    var store = intMapStoreFactory.store("expense");
+    var store = intMapStoreFactory.store("Movie");
     var snapshot = await store.find(db,
         finder: Finder(sortOrders: [SortOrder(Field.key, false)]));
     List<Transactions> transactionList = [];
     for (var record in snapshot) {
       int id = record.key;
       String title = record['title'].toString();
-      double amount = double.parse(record['amount'].toString());
-      String date = record['date'].toString();
+      String director = record['director'].toString();
+      double duration = double.parse(record['duration'].toString());
+      double rating = double.parse(record['rating'].toString());
+      String category = record['category'].toString();
+      String actor = record['actor'].toString();
+
       // print(record['title']);
-      transactionList
-          .add(Transactions(id: id, title: title, amount: amount, date: date));
+      transactionList.add(Transactions(
+        id: id,
+        title: title,
+        director: director,
+        duration: duration,
+        rating: rating,
+        category: category,
+        actor: actor,
+      ));
     }
     db.close();
     return transactionList;
@@ -65,7 +79,7 @@ class TransactionDB {
     var db = await openDatabase();
 
     //create store
-    var store = intMapStoreFactory.store("expense");
+    var store = intMapStoreFactory.store("Movie");
     print("item id ${statement.id}");
 
     //filter with 'id'
@@ -82,7 +96,7 @@ class TransactionDB {
     var db = await openDatabase();
 
     //create store
-    var store = intMapStoreFactory.store("expense");
+    var store = intMapStoreFactory.store("Movie");
     print("Statement id is ${statement.id}");
 
     //filter with 'id'
@@ -98,22 +112,32 @@ class TransactionDB {
     var db = await openDatabase();
 
     //create store
-    var store = intMapStoreFactory.store("expense");
+    var store = intMapStoreFactory.store("Movie");
 
     //Filter store by field 'id'
     var snapshot =
         await store.find(db, finder: Finder(filter: Filter.byKey(rowId)));
-        
 
     Transactions? transaction;
 
     int id = int.parse(snapshot.first['id'].toString());
     String title = snapshot.first['title'].toString();
-    double amount = double.parse(snapshot.first['amount'].toString());
-    String date = snapshot.first['date'].toString();
+    String director = snapshot.first['director'].toString();
+    double duration = double.parse(snapshot.first['duration'].toString());
+    double rating = double.parse(snapshot.first['rating'].toString());
+    String category = snapshot.first['category'].toString();
+    String actor = snapshot.first['actor'].toString();
+
     // print(record['title']);
-    transaction =
-        Transactions(id: id, title: title, amount: amount, date: date);
+    transaction = Transactions(
+      id: id,
+      title: title,
+      director: director,
+      duration: duration,
+      rating: rating,
+      category: category,
+      actor: actor,
+    );
 
     db.close();
     return transaction;
