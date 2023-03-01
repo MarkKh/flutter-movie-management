@@ -12,6 +12,11 @@ class FormScreen extends StatelessWidget {
   //Controller
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+  final durationController = TextEditingController();
+  final directorController = TextEditingController();
+  final ratingController = TextEditingController();
+  final categoryController = TextEditingController();
+  final actorController = TextEditingController();
 
   final ButtonStyle style =
       ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
@@ -32,26 +37,80 @@ class FormScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextFormField(
-                      decoration: const InputDecoration(labelText: "Item Name"),
+                      //Title
+                      decoration: const InputDecoration(labelText: "Title"),
                       autofocus: false,
                       controller: titleController,
                       validator: (String? str) {
                         if (str!.isEmpty) {
-                          return "Please input Item Name.";
+                          return "Please input Title Name.";
                         }
                         return null;
                       },
                     ),
                     TextFormField(
-                      decoration: const InputDecoration(labelText: "Price"),
-                      keyboardType: TextInputType.number,
-                      controller: amountController,
+                      //Title
+                      decoration: const InputDecoration(labelText: "Director"),
+                      autofocus: false,
+                      controller: directorController,
                       validator: (String? str) {
                         if (str!.isEmpty) {
-                          return "Please input Price.";
+                          return "Please input director.";
+                        }
+                        return null;
+                      },
+                    ),
+                    TextFormField(
+                      //Title
+                      decoration: const InputDecoration(labelText: "category"),
+                      autofocus: false,
+                      controller: categoryController,
+                      validator: (String? str) {
+                        if (str!.isEmpty) {
+                          return "Please input category.";
+                        }
+                        return null;
+                      },
+                    ),
+                    TextFormField(
+                      //Title
+                      decoration: const InputDecoration(labelText: "actor"),
+                      autofocus: false,
+                      controller: actorController,
+                      validator: (String? str) {
+                        if (str!.isEmpty) {
+                          return "Please input actor.";
+                        }
+                        return null;
+                      },
+                    ),
+                    TextFormField(
+                      //Title
+                      decoration: const InputDecoration(labelText: "rating"),
+                      keyboardType: TextInputType.number,
+                      autofocus: false,
+                      controller: ratingController,
+                      validator: (String? str) {
+                        if (str!.isEmpty) {
+                          return "Please input rating.";
                         }
                         if (double.parse(str) <= 0) {
-                          return "Please input Price more than 0.";
+                          return "Please input rating more than 0.";
+                        }
+                        return null;
+                      },
+                    ),
+                    TextFormField(
+                      //Duration
+                      decoration: const InputDecoration(labelText: "duration"),
+                      keyboardType: TextInputType.number,
+                      controller: durationController,
+                      validator: (String? str) {
+                        if (str!.isEmpty) {
+                          return "Please input duration.";
+                        }
+                        if (double.parse(str) <= 0) {
+                          return "Please input duration more than 0.";
                         }
                         return null;
                       },
@@ -61,17 +120,26 @@ class FormScreen extends StatelessWidget {
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             var title = titleController.text;
-                            var amount = double.parse(amountController.text);
+                            var director = directorController.text;
+                            var duration =
+                                double.parse(durationController.text);
+                            var rating = double.parse(ratingController.text);
+                            var category = categoryController.text;
+                            var actor = actorController.text;
 
                             // call provider
                             var provider = Provider.of<TransactionProvider>(
                                 context,
                                 listen: false);
                             Transactions item = Transactions(
-                                title: title,
-                                amount: amount,
-                                date: DateFormat('yyyy-MM-dd - kk:mm:ss')
-                                    .format(DateTime.now()));
+                              title: title,
+                              director: director,
+                              duration: duration,
+                              rating: rating,
+                              category: category,
+                              actor: actor,
+                            );
+
                             provider.addTransaction(item);
                             Navigator.pop(context);
                           }
