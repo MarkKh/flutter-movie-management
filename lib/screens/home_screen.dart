@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Expense App"),
+          title: const Text("Movie App"),
           actions: [
             IconButton(
                 icon: const Icon(Icons.exit_to_app),
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             if (count <= 0) {
               return const Center(
                 child: Text(
-                  "No Item Data.",
+                  "No Movie Data.",
                   style: TextStyle(fontSize: 35),
                 ),
               );
@@ -66,10 +66,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           leading: CircleAvatar(
                               radius: 30,
                               child: FittedBox(
-                                child: Text(data.amount.toString()),
+                                child: Text(data.rating.toString()),
                               )),
                           title: Text(data.title),
-                          subtitle: Text(data.date),
+                          subtitle: Text(data.duration.toString() + " min"),
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
