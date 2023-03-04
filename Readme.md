@@ -1,6 +1,7 @@
 # Flutter Project : Movie management
 
 A new Flutter project.
+by MarkKh and Tonliu
 
 ## Getting Started
 
