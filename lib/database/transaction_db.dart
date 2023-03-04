@@ -100,7 +100,7 @@ class TransactionDB {
     print("Statement id is ${statement.id}");
 
     //filter with 'id'
-    final finder = Finder(filter: Filter.equals('id', statement.id));
+    final finder = Finder(filter: Filter.byKey(statement.id));
 
     var deleteResult = await store.delete(db, finder: finder);
     print("$deleteResult row(s) deleted.");

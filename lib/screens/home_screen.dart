@@ -97,7 +97,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           trailing: IconButton(
                               icon: const Icon(Icons.delete),
                               onPressed: () {
-                                // call provider
                                 var provider = Provider.of<TransactionProvider>(
                                     context,
                                     listen: false);
