@@ -46,7 +46,7 @@ class _FormEditScreenState extends State<FormEditScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('แบบฟอร์มแก้ไขข้อมูล'),
+          title: const Text('Update Movie Data'),
         ),
         body: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -141,7 +141,7 @@ class _FormEditScreenState extends State<FormEditScreen> {
                                 double.parse(durationController.text);
                             var rating = double.parse(ratingController.text);
                             var category = categoryController.text;
-                            var actor = directorController.text;
+                            var actor = actorController.text;
 
                             // call provider
                             var provider = Provider.of<TransactionProvider>(

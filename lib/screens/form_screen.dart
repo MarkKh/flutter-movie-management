@@ -27,7 +27,7 @@ class FormScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('แบบฟอร์มบันทึกข้อมูล'),
+          title: const Text('Add Movie Data'),
         ),
         body: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -144,7 +144,7 @@ class FormScreen extends StatelessWidget {
                             Navigator.pop(context);
                           }
                         },
-                        child: const Text("Add data"))
+                        child: const Text("Add data")),
                   ]),
             )));
   }

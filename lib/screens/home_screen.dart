@@ -60,16 +60,34 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Card(
                       elevation: 5,
                       margin: const EdgeInsets.symmetric(
-                          vertical: 5, horizontal: 10),
+                          vertical: 5, horizontal: 20),
                       child: ListTile(
                           enabled: true,
                           leading: CircleAvatar(
                               radius: 30,
                               child: FittedBox(
-                                child: Text(data.rating.toString()),
+                                child: Text(
+                                  data.rating.toString(),
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               )),
-                          title: Text(data.title),
-                          subtitle: Text(data.duration.toString() + " min"),
+                          title: Text(
+                            data.title,
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          subtitle: Text(
+                            "Duration: " +
+                                data.duration.toString() +
+                                " min" +
+                                "\nActor: " +
+                                data.actor.toString() +
+                                "\nDirector: " +
+                                data.director.toString(),
+                            style: TextStyle(fontSize: 15),
+                          ),
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
