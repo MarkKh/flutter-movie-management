@@ -90,7 +90,7 @@ class TransactionDB {
     db.close();
   }
 
-  //my CRUD update code
+  //my CRUD delete code
   Future deleteData(Transactions statement) async {
     //create db client obj
     var db = await openDatabase();
