@@ -119,39 +119,41 @@ class FormScreen extends StatelessWidget {
                         child: Align(
                       alignment: Alignment.centerRight,
                       child: ElevatedButton(
-                          style: const ButtonStyle(
-                            backgroundColor:
-                                MaterialStatePropertyAll<Color>(Colors.purple),
-                            alignment: Alignment.centerRight,
-                          ),
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              var title = titleController.text;
-                              var director = directorController.text;
-                              var duration =
-                                  double.parse(durationController.text);
-                              var rating = double.parse(ratingController.text);
-                              var category = categoryController.text;
-                              var actor = actorController.text;
+                        style: const ButtonStyle(
+                          overlayColor: MaterialStatePropertyAll(Colors.pink),
+                          backgroundColor:
+                              MaterialStatePropertyAll<Color>(Colors.purple),
+                          alignment: Alignment.centerRight,
+                          shadowColor: MaterialStatePropertyAll(Colors.black),
+                        ),
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            var title = titleController.text;
+                            var director = directorController.text;
+                            var duration =
+                                double.parse(durationController.text);
+                            var rating = double.parse(ratingController.text);
+                            var category = categoryController.text;
+                            var actor = actorController.text;
 
-                              // call provider
-                              var provider = Provider.of<TransactionProvider>(
-                                  context,
-                                  listen: false);
-                              Transactions item = Transactions(
-                                title: title,
-                                director: director,
-                                duration: duration,
-                                rating: rating,
-                                category: category,
-                                actor: actor,
-                              );
-
-                              provider.addTransaction(item);
-                              Navigator.pop(context);
-                            }
-                          },
-                          child: const Text("Add data")),
+                            // call provider
+                            var provider = Provider.of<TransactionProvider>(
+                                context,
+                                listen: false);
+                            Transactions item = Transactions(
+                              title: title,
+                              director: director,
+                              duration: duration,
+                              rating: rating,
+                              category: category,
+                              actor: actor,
+                            );
+                            provider.addTransaction(item);
+                            Navigator.pop(context);
+                          }
+                        },
+                        child: const Text("Add data"),
+                      ),
                     ))
                   ]),
             )));
