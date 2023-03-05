@@ -58,9 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   Transactions data = providers.transactions[index];
 
                   return Card(
-                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(24)),
+                      ),
+                      elevation: 4,
+                      color: Color.fromARGB(255, 245, 231, 250),
                       margin: const EdgeInsets.symmetric(
-                          vertical: 5, horizontal: 20),
+                          vertical: 5, horizontal: 12),
                       child: ListTile(
                           enabled: true,
                           leading: CircleAvatar(
