@@ -6,7 +6,7 @@ The Movie Management App is a simple CRUD (Create, Read, Update, Delete) app dev
 
 ## App Features
 
-- Add a new movie with the following details: movie title, director, release date, and genre.
+- Add a new movie with the following details: movie title, director, actor, duration and rating.
 - View a list of all movies in the collection.
 - Edit existing movie details.
 - Delete movies from the collection.
